@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}
+              
+            {% endblock title %}
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <div class="navbar">
+            <a class="nav" href="{% url 'blog:post_list' %}" >Home</a>
+            <form action="{% url 'blog:search' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group rounded">
+                <input name='searched' class="form-control rounded" type="search" placeholder="Search" aria-label="Search" name="" id="ss"> 
+                <input class="btn btn-secondary" type="submit" value="Search" name="" id="">
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            {% block content %}
+              
+            {% endblock content %}
+        </div>
+        <div class="sidebar">
+
+        </div>
+    </body>
+
+    <style>
+
+        .navbar{
+
+            padding: 10px;
+            background-color: rgb(33, 110, 197);
+            text-decoration: none;
+            float:inherit;
+            
+        }
+       
+        
+        a.nav{
+            text-decoration: none;
+            font-size: 30px;
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(255, 255, 255);
+
+            
+        }
+        a.nav:hover{
+            color: rgb(214, 214, 214);
+        }
+        .container{
+
+            margin-top: 30px;
+        }
+    </style>
+</html>

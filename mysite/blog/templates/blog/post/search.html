@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+    {% if searched %}
+      <h1>You searched for "{{ searched }}"</h1>
+      <h3>
+        {% with results.count as total_results %}
+        Found {{ total_results }} result{{ total_results|pluralize }}
+        {% endwith %}
+        </h3>
+
+      {% for result in results  %}
+
+      <h2><a href="{{ result.get_absolute_url }}">{{ result }}</a></h2><br>
+        
+      {% endfor %}
+
+    {% else %}
+
+        <h1>You didn't search anything.</h1>
+    {% endif %}
+{% endblock content %}
